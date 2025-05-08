@@ -1,12 +1,14 @@
 const express = require('express');
 const app = express();
-const userRoutes = require('./routes/user'); 
-const PORT = process.env.PORT || 3000; // Si no existe, usa el puerto 3000 por defecto
+const userRoutes = require('./routes/user');
+const PORT = process.env.PORT || 3000;
 
-// Middleware para las rutas
+app.get('/', (req, res) => {
+  res.send('Bienvenido a la API REST desplegada en Railway 🚀');
+});
+
 app.use('/api', userRoutes);
 
-// Iniciar el servidor
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
